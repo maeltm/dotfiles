@@ -1,5 +1,6 @@
-set nocompatible
-filetype off
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -7,22 +8,26 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-sensible'
+Plugin 'vim-airline/vim-airline'
 Plugin 'SirVer/ultisnips'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
 Plugin 'ctrlpvim/ctrlp.vim'
-
+Plugin 'vim-scripts/wombat256.vim'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'fatih/vim-go'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-
 Plugin 'vimwiki/vimwiki'
 Plugin 'moll/vim-node'
 
-Plugin 'fatih/vim-go'
-Plugin 'wombat256.vim'
+call vundle#end()            " required
+filetype plugin indent on    " required
 
-call vundle#end()
-filetype plugin indent on
-
+colorscheme wombat256mod
 syntax on
+
+set laststatus=2
 set number
 set list
 
@@ -40,8 +45,6 @@ set ignorecase
 set smartcase
 
 set autowrite
-
-colorscheme wombat256mod
 
 let mapleader = ","
 noremap \ ,
@@ -88,3 +91,34 @@ endfunction
 
 autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
+
+" nerdTree setting
+let g:NERDTreeQuitOnOpen=0
+let NERDTreeShowHidden = 1
+nmap <silent> <leader>k :NERDTreeToggle<cr>
+nmap <silent> <leader>y :NERDTreeFind<cr>
+
+" ctrlp setting
+nmap <silent> <leader>r :CtrlPBuffer<cr>
+let g:ctrlp_map = '<leader>t'
+let g:ctrlp_dotfiles = 1
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = {
+    \ 'dir': '\.git$\|node_modules$\|\.hg$\|\.svn$',
+    \ 'file': '\.exe$\|\.so$'
+    \ }
+let g:ctrlp_working_path_mode = 2
+
+" syntastic js setting
+let g:syntastic_javascript_checkers = ['eslint']
+if executable('node_modules/.bin/eslint')
+    let g:syntastic_javascript_eslint_exec ='node_modules/.bin/eslint'
+endif
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticsStatusLineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
