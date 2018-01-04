@@ -30,6 +30,10 @@ syntax on
 set laststatus=2
 set number
 set list
+set noimd
+
+set splitbelow
+set splitright
 
 set tabstop=4
 set shiftwidth=4
