@@ -20,6 +20,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'vimwiki/vimwiki'
 Plugin 'moll/vim-node'
+Plugin 'editorconfig/editorconfig-vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -61,6 +62,8 @@ nnoremap <leader>a :cclose<CR>
 " vimwiki setting
 let g:vimwiki_list = [{'path': '~/workspace/GoogleDrive/notes/', 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_conceallevel = 0
+nmap <Leader>lt <Plug>VimwikiToggleListItem
+vmap <Leader>lt <Plug>VimwikiToggleListItem
 
 " vim-go setting
 let g:go_list_type = "quickfix"
@@ -93,8 +96,8 @@ function! s:build_go_files()
   endif
 endfunction
 
-autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>gb :<C-u>call <SID>build_go_files()<CR>
+autocmd FileType go nmap <leader>gr  <Plug>(go-run)
 
 " nerdTree setting
 let g:NERDTreeQuitOnOpen=0
@@ -126,3 +129,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" editorconfig setting
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
