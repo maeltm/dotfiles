@@ -53,6 +53,7 @@ set autowrite
 
 let mapleader = ","
 noremap \ ,
+nnoremap <esc> :noh<cr><esc>
 
 " quickfix shortcut
 map <C-n> :cnext<CR>
