@@ -21,6 +21,7 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'vimwiki/vimwiki'
 Plugin 'moll/vim-node'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'christoomey/vim-tmux-navigator'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
