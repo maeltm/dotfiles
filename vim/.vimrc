@@ -113,6 +113,7 @@ nmap <silent> <leader>r :CtrlPBuffer<cr>
 let g:ctrlp_map = '<leader>t'
 let g:ctrlp_dotfiles = 1
 let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_custom_ignore = {
     \ 'dir': '\.git$\|node_modules$\|\.hg$\|\.svn$',
     \ 'file': '\.exe$\|\.so$'
