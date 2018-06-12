@@ -110,14 +110,23 @@ nmap <silent> <leader>y :NERDTreeFind<cr>
 
 " ctrlp setting
 nmap <silent> <leader>r :CtrlPBuffer<cr>
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_map = '<leader>t'
 let g:ctrlp_dotfiles = 1
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+let g:ctrlp_root_markers = ['package.json']
 let g:ctrlp_custom_ignore = {
-    \ 'dir': '\.git$\|node_modules$\|\.hg$\|\.svn$',
+    \ 'dir': '\v[\/](\.git|node_modules|\.hg|\.svn)$',
     \ 'file': '\.exe$\|\.so$'
     \ }
+let g:ctrlp_user_command = {
+    \ 'types': {
+        \ 1: ['.git', 'cd %s && git ls-files . -co --exclude-standard'],
+        \ 2: ['package.json', 'find . -type f -not \( -path "*/node_modules/*" -o -path "*/.idea/*" \)'],
+    \ },
+    \ 'fallback': 'find %s -type f',
+    \ 'ignore': 1
+    \}
 let g:ctrlp_working_path_mode = 2
 
 " syntastic js setting
