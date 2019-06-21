@@ -10,6 +10,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-sensible'
 Plugin 'vim-airline/vim-airline'
 Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -62,7 +63,7 @@ map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 
 " vimwiki setting
-let g:vimwiki_list = [{'path': '~/workspace/GoogleDrive/notes/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/workspace/notes/', 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_conceallevel = 0
 nmap <Leader>lt <Plug>VimwikiToggleListItem
 vmap <Leader>lt <Plug>VimwikiToggleListItem
