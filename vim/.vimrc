@@ -55,6 +55,7 @@ set ignorecase
 set smartcase
 
 set autowrite
+set encoding=utf-8
 
 let mapleader = ","
 noremap \ ,

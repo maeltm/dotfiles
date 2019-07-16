@@ -69,7 +69,13 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git brew npm alias-tips) # manzana(os x)
-plugins=(git alias-tips tmux) # linux
+plugins=(git alias-tips) # linux
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+export MANPATH="/usr/local/man:$MANPATH"
 
 # auto start tmux not in tmux; only via ssh connection
 if command -v tmux > /dev/null; then
@@ -81,12 +87,6 @@ if command -v tmux > /dev/null; then
         fi
     fi
 fi
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
