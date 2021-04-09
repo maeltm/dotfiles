@@ -27,6 +27,8 @@ Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'chrisbra/csv.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'posva/vim-vue'
+Plugin 'jremmen/vim-ripgrep'
+Plugin 'fcpg/vim-osc52'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -57,6 +59,7 @@ set smartcase
 
 set autowrite
 set encoding=utf-8
+set completeopt-=preview
 
 let mapleader = ","
 noremap \ ,
@@ -65,6 +68,7 @@ nnoremap <esc> :noh<cr><esc>
 " quickfix shortcut
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
+map <C-o> :.cc<CR>
 nnoremap <leader>a :cclose<CR>
 
 " vimwiki setting
@@ -107,6 +111,10 @@ endfunction
 
 autocmd FileType go nmap <leader>gb :<C-u>call <SID>build_go_files()<CR>
 autocmd FileType go nmap <leader>gr  <Plug>(go-run)
+autocmd FileType go nmap <leader>gt  <Plug>(go-test)
+
+" Ultisnips
+let g:UltiSnipsExpandTrigger="<leader><tab>"
 
 " nerdTree setting
 let g:NERDTreeQuitOnOpen=0
@@ -151,3 +159,6 @@ let g:syntastic_check_on_wq = 0
 
 " editorconfig setting
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+
+" ripgrep setting
+nmap <leader>s :Rg 
