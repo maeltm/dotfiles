@@ -1,37 +1,35 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+call plug#begin('~/.vim/plugged')
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sensible'
+Plug 'vim-airline/vim-airline'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'vim-scripts/wombat256.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'vimwiki/vimwiki'
+Plug 'moll/vim-node'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'chrisbra/csv.vim'
+function! BuildYCM(info)
+  if a:info.status == 'installed' || a:info.force
+    !./install.sh
+  endif
+endfunction
+Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+Plug 'posva/vim-vue'
+Plug 'jremmen/vim-ripgrep'
+Plug 'fcpg/vim-osc52'
 
-Plugin 'VundleVim/Vundle.vim'
-
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-sensible'
-Plugin 'vim-airline/vim-airline'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'vim-scripts/wombat256.vim'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'fatih/vim-go'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'vimwiki/vimwiki'
-Plugin 'moll/vim-node'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'AndrewRadev/splitjoin.vim'
-Plugin 'chrisbra/csv.vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'posva/vim-vue'
-Plugin 'jremmen/vim-ripgrep'
-Plugin 'fcpg/vim-osc52'
-
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
 
 colorscheme wombat256mod
 syntax on
