@@ -28,6 +28,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 Plug 'posva/vim-vue'
 Plug 'jremmen/vim-ripgrep'
 Plug 'fcpg/vim-osc52'
+Plug 'tpope/vim-surround'
 
 call plug#end()
 
