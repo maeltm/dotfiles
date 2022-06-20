@@ -19,12 +19,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'chrisbra/csv.vim'
-function! BuildYCM(info)
-  if a:info.status == 'installed' || a:info.force
-    !./install.sh
-  endif
-endfunction
-Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'posva/vim-vue'
 Plug 'jremmen/vim-ripgrep'
 Plug 'fcpg/vim-osc52'
@@ -67,7 +62,6 @@ nnoremap <esc><esc> :noh<cr><esc>
 " quickfix shortcut
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
-map <C-o> :.cc<CR>
 nnoremap <leader>a :cclose<CR>
 
 " vimwiki setting
@@ -162,7 +156,8 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 " ripgrep setting
 nmap <leader>s :Rg 
 
-" ycm setting
-let g:ycm_key_list_select_completion = ['<C-n>']
-let g:ycm_key_list_previous_completion=['<C-p>']
-
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
