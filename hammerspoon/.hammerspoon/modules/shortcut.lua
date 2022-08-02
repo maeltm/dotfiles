@@ -5,6 +5,8 @@ local appTable = {
     ['n'] = 'Notes',
     ['s'] = 'Slack',
     ['`'] = 'kitty',
+    ['r'] = 'Another Redis Desktop Manager',
+    ['d'] = 'DBeaver',
 }
 
 function obj:init(modkey)
