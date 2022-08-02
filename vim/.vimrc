@@ -55,6 +55,8 @@ set autowrite
 set encoding=utf-8
 set completeopt-=preview
 
+autocmd BufNewFile,BufRead */.ssh/config.d/* set filetype=sshconfig
+
 let mapleader = ","
 noremap \ ,
 nnoremap <esc><esc> :noh<cr><esc>
