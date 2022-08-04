@@ -8,7 +8,6 @@ Plug 'honza/vim-snippets'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'vim-scripts/wombat256.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'godlygeek/tabular'
@@ -25,12 +24,22 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'fcpg/vim-osc52'
 Plug 'tpope/vim-surround'
 
+"Plug 'vim-scripts/wombat256.vim'
+"Plug 'arcticicestudio/nord-vim'
+Plug 'morhetz/gruvbox'
+
 call plug#end()
 
-colorscheme wombat256mod
+"colorscheme wombat256mod
+"colorscheme nord
+set bg=dark
+let g:gruvbox_contrast_dark='soft'
+colorscheme gruvbox
+
 syntax on
 
 set laststatus=2
+set colorcolumn=80
 set number
 set list
 set noimd
