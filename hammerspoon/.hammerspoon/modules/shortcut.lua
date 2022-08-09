@@ -4,7 +4,7 @@ local appTable = {
     ['c'] = 'Google Chrome',
     ['n'] = 'Notes',
     ['s'] = 'Slack',
-    ['`'] = 'kitty',
+    ['`'] = 'Alacritty',
     ['r'] = 'Another Redis Desktop Manager',
     ['d'] = 'DBeaver',
 }
