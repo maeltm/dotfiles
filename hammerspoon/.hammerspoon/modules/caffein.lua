@@ -10,8 +10,10 @@ function obj:init(modal, mod, key)
     function setCaffeineDisplay(state)
         if state then
             caffeine:setTitle(on_icon)
+            hs.alert.show(on_icon)
         else
             caffeine:setTitle(off_icon)
+            hs.alert.show(off_icon)
         end
     end
 
