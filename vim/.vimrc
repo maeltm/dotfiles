@@ -36,6 +36,18 @@ set bg=dark
 let g:gruvbox_contrast_dark='soft'
 colorscheme gruvbox
 
+" coc extensions manage
+let g:coc_global_extensions = [
+            \ 'coc-css',
+            \ 'coc-go',
+            \ 'coc-html',
+            \ 'coc-json',
+            \ 'coc-pyright',
+            \ 'coc-rust-analyzer',
+            \ 'coc-tsserver',
+            \ 'coc-ultisnips'
+            \]
+
 syntax on
 
 set laststatus=2
