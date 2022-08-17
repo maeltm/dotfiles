@@ -228,9 +228,9 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 " ripgrep setting
 nmap <leader>s :Rg 
 
-" Make <CR> to accept selected completion item or notify coc.nvim to format
+" Make <C-l> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice.
-inoremap <silent><expr> <C-l> pumvisible() ? coc#_select_confirm()
+inoremap <silent><expr> <C-l> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " GoTo code navigation.
