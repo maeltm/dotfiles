@@ -1,0 +1,12 @@
+snippet eaf
+export async function ${1}(${2}) {
+  ${3:EDIT}
+}
+endsnippet
+
+snippet eeaf
+export async function ${1}(${2:req}, ${3:res}) {
+  ${4:EDIT}
+  return Success(req, ${5:{}});
+}
+endsnippet
