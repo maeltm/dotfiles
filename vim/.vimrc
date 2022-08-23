@@ -176,12 +176,6 @@ autocmd FileType go nmap <leader>gb :<C-u>call <SID>build_go_files()<CR>
 autocmd FileType go nmap <leader>gr  <Plug>(go-run)
 autocmd FileType go nmap <leader>gt  <Plug>(go-test)
 
-" Ultisnips
-let g:UltiSnipsExpandTrigger="<C-l>"
-let g:UltiSnipsJumpForwardTrigger="<Tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
-let g:UltiSnipsEditSplit="vertical"
-
 " nerdTree setting
 let g:NERDTreeQuitOnOpen=0
 let NERDTreeShowHidden = 1
@@ -235,6 +229,12 @@ nmap <leader>s :Rg
 " <C-g>u breaks current undo, please make your own choice.
 inoremap <silent><expr> <C-l> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Ultisnips
+" let g:UltiSnipsExpandTrigger="<C-l>"
+let g:UltiSnipsJumpForwardTrigger="<Tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+let g:UltiSnipsEditSplit="vertical"
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
