@@ -7,7 +7,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
-Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'godlygeek/tabular'
@@ -20,10 +20,12 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'chrisbra/csv.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'posva/vim-vue'
-Plug 'jremmen/vim-ripgrep'
+"Plug 'jremmen/vim-ripgrep'
 Plug 'fcpg/vim-osc52'
 Plug 'tpope/vim-surround'
 Plug 'OmniSharp/omnisharp-vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 
 "Plug 'vim-scripts/wombat256.vim'
 "Plug 'arcticicestudio/nord-vim'
@@ -182,26 +184,26 @@ let NERDTreeShowHidden = 1
 nmap <silent> <leader>k :NERDTreeToggle<cr>
 nmap <silent> <leader>y :NERDTreeFind<cr>
 
-" ctrlp setting
-nmap <silent> <leader>r :CtrlPBuffer<cr>
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-let g:ctrlp_map = '<leader>t'
-let g:ctrlp_dotfiles = 1
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_root_markers = ['package.json']
-let g:ctrlp_custom_ignore = {
-    \ 'dir': '\v[\/](\.git|node_modules|\.hg|\.svn)$',
-    \ 'file': '\.exe$\|\.so$'
-    \ }
-let g:ctrlp_user_command = {
-    \ 'types': {
-        \ 1: ['.git', 'cd %s && git ls-files . -co --exclude-standard'],
-        \ 2: ['package.json', 'find . -type f -not \( -path "*/node_modules/*" -o -path "*/.idea/*" \)'],
-    \ },
-    \ 'fallback': 'find %s -type f',
-    \ 'ignore': 1
-    \}
-let g:ctrlp_working_path_mode = 2
+" " ctrlp setting
+" nmap <silent> <leader>r :CtrlPBuffer<cr>
+" set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+" let g:ctrlp_map = '<leader>t'
+" let g:ctrlp_dotfiles = 1
+" let g:ctrlp_working_path_mode = 'ra'
+" let g:ctrlp_root_markers = ['package.json']
+" let g:ctrlp_custom_ignore = {
+"     \ 'dir': '\v[\/](\.git|node_modules|\.hg|\.svn)$',
+"     \ 'file': '\.exe$\|\.so$'
+"     \ }
+" let g:ctrlp_user_command = {
+"     \ 'types': {
+"         \ 1: ['.git', 'cd %s && git ls-files . -co --exclude-standard'],
+"         \ 2: ['package.json', 'find . -type f -not \( -path "*/node_modules/*" -o -path "*/.idea/*" \)'],
+"     \ },
+"     \ 'fallback': 'find %s -type f',
+"     \ 'ignore': 1
+"     \}
+" let g:ctrlp_working_path_mode = 2
 
 " syntastic js setting
 let g:syntastic_javascript_checkers = ['eslint']
@@ -222,8 +224,8 @@ let g:syntastic_cs_checkers = ['code_checker']
 " editorconfig setting
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
-" ripgrep setting
-nmap <leader>s :Rg 
+" " ripgrep setting
+" nmap <leader>s :Rg 
 
 " Make <C-l> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice.
@@ -241,3 +243,12 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" fzf setting
+nmap <silent> <leader>r :Buffers<cr>
+nmap <silent> <leader>t :Files<cr>
+nmap <leader>s :Rg 
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   "rg --column --line-number --no-heading --color=always --smart-case -g '!.git' -g '!node_modules' -g '!.svn' -- ".shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
