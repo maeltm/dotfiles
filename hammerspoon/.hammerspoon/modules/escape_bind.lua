@@ -8,7 +8,8 @@ local esc_bind
 function convert_to_eng_with_esc()
 	local inputSource = hs.keycodes.currentSourceID()
 	if not (inputSource == inputEnglish) then
-		hs.eventtap.keyStroke({}, 'right')
+		-- hs.eventtap.keyStroke({}, 'space')
+		-- hs.eventtap.keyStroke({}, 'delete')
 		hs.keycodes.currentSourceID(inputEnglish)
 	end
 	esc_bind:disable()
