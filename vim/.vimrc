@@ -41,6 +41,8 @@ colorscheme gruvbox
 
 " coc extensions manage
 let g:coc_global_extensions = [
+            \ 'coc-clangd',
+            \ 'coc-cmake',
             \ 'coc-css',
             \ 'coc-go',
             \ 'coc-html',
