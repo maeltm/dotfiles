@@ -26,6 +26,9 @@ Plug 'tpope/vim-surround'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'ryanoasis/vim-devicons'
+Plug 'lambdalisue/glyph-palette.vim'
 
 "Plug 'vim-scripts/wombat256.vim'
 "Plug 'arcticicestudio/nord-vim'
@@ -50,6 +53,7 @@ let g:coc_global_extensions = [
             \ 'coc-pyright',
             \ 'coc-rust-analyzer',
             \ 'coc-tsserver',
+            \ 'coc-prettier',
             \ 'coc-ultisnips'
             \]
 
@@ -60,6 +64,7 @@ set colorcolumn=80
 set number
 set list
 set noimd
+set clipboard=unnamed
 
 set splitbelow
 set splitright
@@ -226,9 +231,6 @@ let g:syntastic_cs_checkers = ['code_checker']
 " editorconfig setting
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
-" " ripgrep setting
-" nmap <leader>s :Rg 
-
 " Make <C-l> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice.
 inoremap <silent><expr> <C-l> coc#pum#visible() ? coc#pum#confirm()
@@ -236,8 +238,8 @@ inoremap <silent><expr> <C-l> coc#pum#visible() ? coc#pum#confirm()
 
 " Ultisnips
 " let g:UltiSnipsExpandTrigger="<C-l>"
-let g:UltiSnipsJumpForwardTrigger="<Tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 let g:UltiSnipsEditSplit="vertical"
 
 " GoTo code navigation.
@@ -254,3 +256,12 @@ command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   "rg --column --line-number --no-heading --color=always --smart-case -g '!.git' -g '!node_modules' -g '!.svn' -- ".shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
+
+" glyph-palette setting.
+augroup my-glyph-palette
+    autocmd! *
+    autocmd FileType nerdtree call glyph_palette#apply()
+augroup END
+
+" airline setting
+let g:airline#extensions#tabline#enabled=1
