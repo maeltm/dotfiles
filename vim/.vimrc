@@ -93,8 +93,8 @@ noremap \ ,
 nnoremap <esc><esc> :noh<cr><esc>
 
 " quickfix shortcut
-map <C-n> :cnext<CR>
-map <C-m> :cprevious<CR>
+nmap <leader>n :cnext<CR>
+nmap <leader>p :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 
 " vimwiki setting
