@@ -1,10 +1,7 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": [
-    "json",
-    "yaml",
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ]
+  "tailwindCSS.headwind.runOnSave": false,
+  "[json][yaml][javascript][javascriptreact][typescript][typescriptreact]": {
+    "coc.preferences.formatOnSave": true
+  },
+  "tsserver.useLocalTsdk": true
 }
