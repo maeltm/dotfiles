@@ -1,0 +1,30 @@
+import = ["/Users/catstail/.config/alacritty/theme/nord.toml"]
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[cursor]
+blink_interval = 450
+
+[cursor.style]
+blinking = "Always"
+
+[font]
+size = 18.0
+
+[font.bold]
+style = "Bold"
+
+[font.bold_italic]
+style = "Bold Oblique"
+
+[font.italic]
+style = "Oblique"
+
+[font.normal]
+family = "DejaVuSansM Nerd Font Mono"
+style = "Regular"
+
+[window]
+option_as_alt = "OnlyLeft"
+startup_mode = "Fullscreen"
