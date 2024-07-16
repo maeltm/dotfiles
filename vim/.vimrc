@@ -24,12 +24,14 @@ Plug 'posva/vim-vue'
 Plug 'fcpg/vim-osc52'
 Plug 'tpope/vim-surround'
 Plug 'OmniSharp/omnisharp-vim'
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'ryanoasis/vim-devicons'
 Plug 'lambdalisue/glyph-palette.vim'
 Plug 'github/copilot.vim'
+
+Plug 'tomlion/vim-solidity'
 
 "Plug 'vim-scripts/wombat256.vim'
 "Plug 'arcticicestudio/nord-vim'
@@ -104,8 +106,27 @@ nnoremap <leader>a :cclose<CR>
 " vimwiki setting
 let g:vimwiki_list = [{'path': '~/workspace/notes/', 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_conceallevel = 0
+let g:vimwiki_global_ext = 0
+let g:vimwiki_key_mappings =
+\ {
+\   'all_maps': 1,
+\   'global': 1,
+\   'headers': 1,
+\   'text_objs': 1,
+\   'table_format': 1,
+\   'table_mappings': 0,
+\   'lists': 1,
+\   'links': 1,
+\   'html': 0,
+\   'mouse': 1,
+\ }
+
 nmap <Leader>lt <Plug>VimwikiToggleListItem
 vmap <Leader>lt <Plug>VimwikiToggleListItem
+imap <C-l> <Plug>VimwikiTableNextCell
+imap <C-h> <Plug>VimwikiTablePrevCell
+
+
 
 " OmniSharp setting
 let g:OmniSharp_server_use_net6 = 1
