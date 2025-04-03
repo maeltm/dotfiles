@@ -36,14 +36,17 @@ Plug 'tomlion/vim-solidity'
 "Plug 'vim-scripts/wombat256.vim'
 "Plug 'arcticicestudio/nord-vim'
 Plug 'morhetz/gruvbox'
+Plug 'folke/tokyonight.nvim'
 
 call plug#end()
 
 "colorscheme wombat256mod
 "colorscheme nord
-set bg=dark
-let g:gruvbox_contrast_dark='soft'
-colorscheme gruvbox
+
+"set bg=dark
+"let g:gruvbox_contrast_dark='soft'
+"colorscheme gruvbox
+colorscheme tokyonight-storm
 
 " coc extensions manage
 let g:coc_global_extensions = [
