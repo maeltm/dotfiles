@@ -1,3 +1,4 @@
+[general]
 import = ["/Users/catstail/.config/alacritty/theme/nord.toml"]
 
 [colors]
