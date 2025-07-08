@@ -43,10 +43,10 @@ call plug#end()
 "colorscheme wombat256mod
 "colorscheme nord
 
-"set bg=dark
-"let g:gruvbox_contrast_dark='soft'
-"colorscheme gruvbox
-colorscheme tokyonight-storm
+set bg=dark
+let g:gruvbox_contrast_dark='soft'
+colorscheme gruvbox
+"colorscheme tokyonight-storm
 
 " coc extensions manage
 let g:coc_global_extensions = [
