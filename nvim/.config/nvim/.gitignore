@@ -1,1 +1,12 @@
-*/
+# Vim/Neovim 백업 및 스왑 파일
+*.bak
+*~
+*.swp
+*.swo
+
+# 세션 파일 (사용하는 경우)
+Session.vim
+
+# OS별 메타데이터 파일
+.DS_Store
+Thumbs.db

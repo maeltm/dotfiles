@@ -1,0 +1,16 @@
+-- vim.g.coc_global_extensions = {
+--   'coc-clangd',
+--   'coc-cmake',
+--   'coc-css',
+--   '@yaegassy/coc-tailwindcss3',
+--   'coc-go',
+--   'coc-html',
+--   'coc-json',
+--   'coc-pyright',
+--   'coc-rust-analyzer',
+--   'coc-tsserver',
+--   'coc-eslint',
+--   'coc-prettier',
+--   'coc-ultisnips'
+-- }
+-- 
