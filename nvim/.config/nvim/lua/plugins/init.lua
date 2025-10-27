@@ -53,7 +53,11 @@ return {
 
 
     -- 검색
-    { "junegunn/fzf",                  build = function() vim.fn["fzf#install"]() end },
+    {
+        "junegunn/fzf",
+        lazy = true,
+        build = './install --bin',
+    },
     {
         "junegunn/fzf.vim",
         dependencies = { "junegunn/fzf" },  -- fzf binary도 같이 필요
