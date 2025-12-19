@@ -17,56 +17,64 @@ return {
             end
 
             null_ls.setup({
-                sources = has_prettier and {
-                    -- formatters
-                    null_ls.builtins.formatting.prettier.with({
-                        filetypes = {
-                            "javascript", "typescript", "typescriptreact", "javascriptreact",
-                            "vue", "css", "scss", "html", "json", "yaml", "markdown", "graphql",
-                        },
+                debug = true,
+                sources = {
+                    null_ls.builtins.formatting.prettier,
+                },
+                -- sources = has_prettier and {
+                --     -- formatters
+                --     null_ls.builtins.formatting.prettier.with({
+                --         filetypes = {
+                --             "javascript", "typescript", "typescriptreact", "javascriptreact",
+                --             "vue", "css", "scss", "html", "json", "yaml", "markdown", "graphql",
+                --         },
 
-                        extra_args = function(params)
-                            local ignore_path = params.root .. "/.prettierignore"
-                            local file_exists = vim.fn.filereadable(ignore_path) == 1
-                            print("[Prettier] ignore_path:", ignore_path, "exists:", file_exists)
-                            print("[Prettier] stdin-filepath:", params.bufname)
+                --         extra_args = function(params)
+                --             local ignore_path = params.root .. "/.prettierignore"
+                --             local file_exists = vim.fn.filereadable(ignore_path) == 1
+                --             print("[Prettier] ignore_path:", ignore_path, "exists:", file_exists)
+                --             print("[Prettier] stdin-filepath:", params.bufname)
 
-                            return {
-                                "--ignore-path", ignore_path,
-                                "--stdin-filepath", vim.fn.fnamemodify(params.bufname, ":p"),
-                            }
-                        end,
-                        cwd = function(params)
-                            local root = utils.root_pattern(
-                                ".prettierrc",
-                                ".prettierrc.js",
-                                ".prettierrc.json",
-                                ".prettierignore",
-                                "package.json",
-                                ".git"
-                            )(params.bufname)
+                --             return {
+                --                 "--ignore-path", ignore_path,
+                --             }
+                --         end,
+                --         cwd = function(params)
+                --             local root = utils.root_pattern(
+                --                 ".prettierrc",
+                --                 ".prettierrc.js",
+                --                 ".prettierrc.json",
+                --                 ".prettierignore",
+                --                 "package.json",
+                --                 ".git"
+                --             )(params.bufname)
 
-                            local ignore_path = root and (root .. "/.prettierignore") or nil
-                            local exists = ignore_path and vim.loop.fs_stat(ignore_path) ~= nil
+                --             local ignore_path = root and (root .. "/.prettierignore") or nil
+                --             local exists = ignore_path and vim.loop.fs_stat(ignore_path) ~= nil
 
-                            -- 로그 출력
-                            vim.schedule(function()
-                                vim.notify(("[null-ls] Prettier CWD: %s"):format(root or "nil"), vim.log.levels.INFO)
-                                vim.notify(("[null-ls] .prettierignore %s"):format(exists and "FOUND" or "NOT FOUND"),
-                                    vim.log.levels.INFO)
-                            end)
+                --             -- 로그 출력
+                --             vim.schedule(function()
+                --                 vim.notify(("[null-ls] Prettier CWD: %s"):format(root or "nil"), vim.log.levels.INFO)
+                --                 vim.notify(("[null-ls] .prettierignore %s"):format(exists and "FOUND" or "NOT FOUND"),
+                --                     vim.log.levels.INFO)
+                --             end)
 
-                            return root
-                        end,
-                    }),
-                } or {},
+                --             return root
+                --         end,
+                --     }),
+                -- } or {},
                 on_attach = function(client, bufnr)
                     if client.supports_method("textDocument/formatting") then
                         vim.api.nvim_create_autocmd("BufWritePre", {
                             buffer = bufnr,
                             callback = function()
-                                print("Formatting buffer with null-ls...")
-                                vim.lsp.buf.format({ async = false })
+                                -- print("Formatting buffer with null-ls...")
+                                vim.lsp.buf.format({ async = false,
+                                    filter = function(fmt_client)
+                                        -- print("Formatter client:", fmt_client.name)
+                                        return fmt_client.name == "null-ls"
+                                    end,
+                                })
                             end,
                         })
                     end
