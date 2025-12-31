@@ -26,6 +26,10 @@ elif command -v bat &> /dev/null && bat --version 2>/dev/null | grep -q 'bat'; t
   _FZF_BAT_CMD="bat"
 fi
 
+if [ -n "$_FZF_BAT_CMD" ]; then
+  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+fi
+
 # Only set fzf options if the required, VERIFIED commands were found.
 # This prevents errors if another program is using the name 'fd' or 'bat'.
 if [ -n "$_FZF_FD_CMD" ] && [ -n "$_FZF_BAT_CMD" ]; then
