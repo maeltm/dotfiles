@@ -1,13 +1,36 @@
-[user]
-	name = Catstail
-	email = maeltm18@gmail.com
-[merge]
-	tool = vimdiff
-[mergetool]
-	keepBackup = false
+[core]
+    editor = nvim
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
 [alias]
-	lg = log --graph --abbrev-commit --decorate --format=format:'%C(cyan)%h%C(reset) - %C(green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(yellow)%d%C(reset)' --all
+    lg = log --graph --abbrev-commit --decorate --format=format:'%C(cyan)%h%C(reset) - %C(green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(yellow)%d%C(reset)' --all
+    tg = log --tags --simplify-by-decoration --graph --decorate --format=format:'%C(cyan)%h%C(reset) - %C(green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(yellow)%d%C(reset)'
+    report = log --date=format-local:'%Y-%m-%d %H:%M:%S' --graph --abbrev-commit --decorate --format=format:'%C(cyan)%h%C(reset) - %C(green)(%ad)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(yellow)%d%C(reset)'
+    eg = "!git lg --color | devmoji --format unicode | less"
+[diff]
+    tool = nvimdiff
+[difftool]
+    prompt = false
+[difftool "nvimdiff"]
+    cmd = nvim -d "$LOCAL" "$REMOTE"
+
+[merge]
+    tool = nvimdiff
+[mergetool]
+    keepBackup = false
+[mergetool "nvimdiff"]
+    cmd = nvim -d "$LOCAL" "$BASE" "$REMOTE" "$MERGED" -c '$wincmd w' -c 'wincmd J' \
+        -c 'nnoremap <buffer> <leader>h :diffget 1<CR>' \
+        -c 'nnoremap <buffer> <leader>l :diffget 3<CR>' \
+        -c 'nnoremap <buffer> <leader>k :diffget 2<CR>' \
+        -c 'xnoremap <buffer> <leader>h :diffget 1<CR>' \
+        -c 'xnoremap <buffer> <leader>l :diffget 3<CR>' \
+        -c 'xnoremap <buffer> <leader>k :diffget 2<CR>'
+
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [include]
-	path = .local.gitconfig
+    path = .local.gitconfig
